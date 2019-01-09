@@ -1,0 +1,1511 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     61552,       1503]
+NotebookOptionsPosition[     60316,       1460]
+NotebookOutlinePosition[     60664,       1475]
+CellTagsIndexPosition[     60621,       1472]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"KINEMATICS", " ", "PAPER"}], "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"Mean", " ", 
+    RowBox[{"(", 
+     RowBox[{"with", " ", 
+      RowBox[{"S", ".", "D", "."}]}], ")"}], " ", "FOOTFALL", " ", "PATTERNS",
+     "\[IndentingNewLine]", "pooled", " ", "data", " ", "from", " ", "23", 
+    " ", "trials", " ", 
+    RowBox[{"(", 
+     RowBox[{"8", " ", "animals"}], ")"}]}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.653110660375437*^9, 3.653110688451043*^9}, {
+  3.6531107678985868`*^9, 3.6531107763870726`*^9}, {3.6624529468183403`*^9, 
+  3.662452966258452*^9}, {3.6624735381470966`*^9, 3.6624735513468513`*^9}, {
+  3.739039812648124*^9, 3.7390398158081694`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+  "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+    "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**"}], 
+  "******)"}]], "Input",
+ CellChangeTimes->{{3.662728311145976*^9, 3.6627283141663094`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Determine", " ", "operating", " ", "system"}], " ", "*)"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"os", "=", "$OperatingSystem"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+   "frogworkpath", "=", "\"\<C:\\\\YOUR FILE DIRECTORY HERE\\\\\>\""}], " ", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"Set", " ", "your", " ", "main", " ", "file", " ", "directory"}],
+      ",", " ", 
+     RowBox[{
+     "not", " ", "to", " ", "the", " ", "folder", " ", "where", " ", "raw", 
+      " ", "or", " ", "archived", " ", "data", " ", "are", " ", "stored"}]}], 
+    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"e", ".", "g", ".", " ", "frogworkpath"}], "=", 
+     "\"\<C:\\\\Users\\\\Documents\\\\\>\""}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+    "for", " ", "Mac", " ", "users", " ", "change", " ", "\"\<C:\\\\\>\"", 
+     " ", "to", " ", "\"\<\\\\Volumes\\\\\>\""}], "*)"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "dataDirectory", "=", "\"\<YOUR DIRECTORY FOOTFALL PATTERN DATA\>\""}], 
+    ";", " ", 
+    RowBox[{"(*", 
+     RowBox[{
+     "Set", " ", "the", " ", "directory", " ", "where", " ", "the", " ", 
+      "footfall", " ", "pattern", " ", "data", " ", "is", " ", "located"}], 
+     "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"setpathDataWin", "=", 
+     RowBox[{"StringJoin", "[", 
+      RowBox[{"frogworkpath", ",", "dataDirectory"}], "]"}]}], ";", 
+    RowBox[{"(*", 
+     RowBox[{
+     "windows", " ", "formatted", " ", "path", " ", "as", " ", "string"}], 
+     "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"splitpath", "=", 
+     RowBox[{"FileNameSplit", "[", 
+      RowBox[{"setpathDataWin", ",", 
+       RowBox[{"OperatingSystem", "\[Rule]", "\"\<Windows\>\""}]}], 
+      RowBox[{"(*", 
+       RowBox[{
+       "change", " ", "to", " ", "MacOSX", " ", "if", " ", "necessary"}], 
+       "*)"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"setpathData", "=", 
+     RowBox[{"FileNameJoin", "[", 
+      RowBox[{"splitpath", ",", 
+       RowBox[{"OperatingSystem", "\[Rule]", "os"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"SetDirectory", "[", "setpathData", "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+     "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+       "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+       "**"}], "**"}], "*******)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"importedrawfootfalldata", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{"\"\<Footfall Pattern Data.xlsx\>\"", ",", "\"\<Data\>\""}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"rawfootfalldata", "=", 
+     RowBox[{"Transpose", "[", 
+      RowBox[{"importedrawfootfalldata", "[", 
+       RowBox[{"[", 
+        RowBox[{"1", ",", 
+         RowBox[{"1", ";;", "27"}], ",", 
+         RowBox[{"1", ";;", "16"}]}], "]"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"Dimensions", "[", "rawfootfalldata", "]"}], "\[IndentingNewLine]", 
+   RowBox[{"rawfootfalldata", "[", 
+    RowBox[{"[", 
+     RowBox[{";;", ",", "27"}], "]"}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"16", " ", "columns"}], ",", " ", 
+     RowBox[{"27", " ", "rows"}]}], "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"FOOTFALL", " ", "DATA", " ", "ROWS"}], ";", 
+     "\[IndentingNewLine]", "                  ", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"KM01_RUN", "_", "02"}], " ", "=", " ", "1"}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"KM02_RUN", "_", "01"}], " ", "=", " ", "2"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"KM02_RUN", "_", "02"}], " ", "=", " ", "3"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"KM02_RUN", "_", "09"}], " ", "=", " ", "4"}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"KM04_RUN", "_", "09"}], " ", "=", " ", "5"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"KM04_RUN", "_", "11"}], " ", "=", " ", "6"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"KM04_RUN", "_", "12"}], " ", "=", " ", "7"}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"KM05_RUN", "_", "04"}], " ", "=", " ", "8"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"KM05_RUN", "_", "08"}], " ", "=", " ", "9"}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"KM06_RUN", "_", "11"}], " ", "=", " ", "10"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"KM06_RUN", "_", "12"}], " ", "=", " ", "11"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"KM06_RUN", "_", "13"}], " ", "=", " ", "12"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"KM06_RUN", "_", "15"}], " ", "=", " ", "13"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"KM06_RUN", "_", "16"}], " ", "=", " ", "14"}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"KM07_RUN", "_", "14"}], " ", "=", " ", "15"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"KM07_RUN", "_", "16"}], " ", "=", " ", "16"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"KM07_RUN", "_", "17"}], " ", "=", " ", "17"}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"KM08_RUN", "_", "09"}], " ", "=", " ", "18"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"KM08_RUN", "_", "10"}], " ", "=", " ", "19"}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"KM23_RUN", "_", "01"}], " ", "=", " ", "20"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"KM23_RUN", "_", "02"}], " ", "=", " ", "21"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"KM23_RUN", "_", "03"}], " ", "=", " ", "22"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"KM23_RUN", "_", "05"}], " ", "=", " ", "23"}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"Averages", " ", "=", " ", "24"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"SD", " ", "=", " ", "25"}], ";", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Average", " ", "-", " ", "SD"}], " ", "=", " ", "26"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Average", " ", "+", " ", "SD"}], " ", "=", " ", "27"}], ";"}], 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", "*)"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"FOOTFALL", " ", "DATA", " ", "COLUMNS"}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Right", " ", 
+        RowBox[{"Hindlimb", ":", " ", 
+         RowBox[{"Block", " ", "1"}]}]}], " ", "=", " ", 
+       RowBox[{"1", "-", "2"}]}]}], ",", " ", 
+     RowBox[{
+      RowBox[{"Block", " ", "2"}], " ", "=", " ", 
+      RowBox[{"3", "-", "4"}]}], ",", " ", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Left", " ", 
+       RowBox[{"Forelimb", ":", " ", 
+        RowBox[{"Block", " ", "1"}]}]}], " ", "=", " ", 
+      RowBox[{"5", "-", "6"}]}], ",", " ", 
+     RowBox[{
+      RowBox[{"Block", " ", "2"}], " ", "=", " ", 
+      RowBox[{"7", "-", "8"}]}], ",", " ", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Left", " ", 
+       RowBox[{"Hindlimb", ":", " ", 
+        RowBox[{"Block", " ", "1"}]}]}], " ", "=", " ", 
+      RowBox[{"9", "-", "10"}]}], ",", " ", 
+     RowBox[{
+      RowBox[{"Block", " ", "2"}], " ", "=", " ", 
+      RowBox[{"11", "-", "12"}]}], ",", " ", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Right", " ", 
+       RowBox[{"Forelimb", ":", " ", 
+        RowBox[{"Block", " ", "1"}]}]}], " ", "=", " ", 
+      RowBox[{"13", "-", "14"}]}], ",", " ", 
+     RowBox[{
+      RowBox[{"Block", " ", "2"}], " ", "=", " ", 
+      RowBox[{"15", "-", "16"}]}], ","}], " ", "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", "*)"}]}]}]], "Input",
+ CellChangeTimes->{{3.662473587390913*^9, 3.6624736213258543`*^9}, {
+   3.6624736609291196`*^9, 3.662473828131683*^9}, {3.662473862838668*^9, 
+   3.662473878669574*^9}, {3.6624739094733353`*^9, 3.6624739430242543`*^9}, {
+   3.662473979752355*^9, 3.6624740575298033`*^9}, {3.6624740901826715`*^9, 
+   3.662474177437662*^9}, {3.6627286529897957`*^9, 3.662728654625454*^9}, {
+   3.662728865134899*^9, 3.662728867398575*^9}, {3.662728947241948*^9, 
+   3.662728971249015*^9}, 3.6627336729392667`*^9, {3.662735133296028*^9, 
+   3.662735180817067*^9}, {3.6649666169452024`*^9, 3.664966620692876*^9}, {
+   3.6649666609153905`*^9, 3.6649667142563705`*^9}, {3.6685146282328815`*^9, 
+   3.6685146321621065`*^9}, {3.668514748910784*^9, 3.6685147514389286`*^9}, {
+   3.695390500994174*^9, 3.6953905083341846`*^9}, {3.708970308383527*^9, 
+   3.708970325699683*^9}, {3.7089704436039066`*^9, 3.7089704440518837`*^9}, {
+   3.7089704741131926`*^9, 3.7089705417585735`*^9}, {3.708970685548633*^9, 
+   3.7089706859489374`*^9}, {3.7089708334748487`*^9, 3.708970847807109*^9}, {
+   3.7089708989557233`*^9, 3.708970903923323*^9}, {3.7089712341993933`*^9, 
+   3.708971263529205*^9}, {3.708971294901594*^9, 3.7089712952276745`*^9}, {
+   3.708971398360437*^9, 3.7089714173385353`*^9}, {3.7089714532659674`*^9, 
+   3.7089714671525607`*^9}, {3.708971520399468*^9, 3.708971539158738*^9}, {
+   3.708971574697424*^9, 3.708971597033944*^9}, {3.708971662630541*^9, 
+   3.7089716725812516`*^9}, {3.7390398800909815`*^9, 
+   3.7390398973532505`*^9}, {3.7390399580857515`*^9, 
+   3.7390399642776003`*^9}, {3.739040133768152*^9, 3.739040284202986*^9}, {
+   3.7390403155127754`*^9, 3.739040399303249*^9}, 3.7390404700627394`*^9, {
+   3.739040631000949*^9, 3.739040631097828*^9}, {3.739040688021902*^9, 
+   3.7390406881469774`*^9}, 3.740898442805972*^9, {3.7415911984470263`*^9, 
+   3.741591198527808*^9}, {3.7534544030778427`*^9, 3.7534544385990252`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"16", ",", "27"}], "}"}]], "Output",
+ CellChangeTimes->{{3.739040679389278*^9, 3.7390406886097445`*^9}, 
+   3.740898470955101*^9, 3.741591224970723*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.`", ",", "75.33313`", ",", "100.`", ",", "200.`", ",", 
+   RowBox[{"-", "4.58981`"}], ",", "69.52643`", ",", "92.57024`", ",", 
+   "200.`", ",", 
+   RowBox[{"-", "7.37625`"}], ",", "31.69231`", ",", "52.47439`", ",", 
+   "200.`", ",", 
+   RowBox[{"-", "7.44812`"}], ",", "17.28095`", ",", "43.4605`", ",", 
+   "200.`"}], "}"}]], "Output",
+ CellChangeTimes->{{3.739040679389278*^9, 3.7390406886097445`*^9}, 
+   3.740898470955101*^9, 3.7415912249767094`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+  "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+    "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**"}], 
+  "******)"}]], "Input",
+ CellChangeTimes->{{3.662728311145976*^9, 3.6627283141663094`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"USER", " ", "INPUT"}], "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"percentavfootfalldatarow", "=", "24"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"percentavminussdfootfalldatarow", "=", "26"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"percentavplussdfootfalldatarow", "=", "27"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"data", "=", "\"\<RUN\>\""}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.6627284757645264`*^9, 3.6627284763823028`*^9}, {
+   3.6627286428308544`*^9, 3.662728687593541*^9}, 3.662729568616969*^9, {
+   3.7089705824795856`*^9, 3.7089705932246265`*^9}, {3.73904074175696*^9, 
+   3.7390407456643224`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+  "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+    "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**"}], 
+  "******)"}]], "Input",
+ CellChangeTimes->{{3.662728311145976*^9, 3.6627283141663094`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Mean", " ", "footfall"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"percentavfootfallstyle", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"PlotStyle", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"Gray", ",", 
+          RowBox[{"Thickness", "[", "0.01", "]"}]}], "}"}]}], ",", 
+       RowBox[{"Frame", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"True", ",", "False"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"True", ",", "False"}], "}"}]}], "}"}]}], ",", 
+       RowBox[{"FrameTicks", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+           "0", ",", "10", ",", "20", ",", "30", ",", "40", ",", "50", ",", 
+            "60", ",", "70", ",", "80", ",", "90", ",", "100"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"1", ",", "2", ",", "3", ",", "4"}], "}"}]}], "}"}]}], ",", 
+       RowBox[{"FrameLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"\"\<Percent Stride Cycle\>\"", ",", "None"}], "}"}]}], ",", 
+       RowBox[{"LabelStyle", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"Black", ",", "Larger"}], "}"}]}], ",", 
+       RowBox[{"PlotRange", "->", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0", ",", "100"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", "5"}], "}"}]}], "}"}]}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavrh1", "=", 
+     RowBox[{"ListLinePlot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"1", ",", "percentavfootfalldatarow"}], "]"}], "]"}], 
+           ",", "4"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"2", ",", "percentavfootfalldatarow"}], "]"}], "]"}], 
+           ",", "4"}], "}"}]}], "}"}], ",", "percentavfootfallstyle"}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavlf1", "=", 
+     RowBox[{"ListLinePlot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"5", ",", "percentavfootfalldatarow"}], "]"}], "]"}], 
+           ",", "2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"6", ",", "percentavfootfalldatarow"}], "]"}], "]"}], 
+           ",", "2"}], "}"}]}], "}"}], ",", "percentavfootfallstyle"}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavlh1", "=", 
+     RowBox[{"ListLinePlot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"9", ",", "percentavfootfalldatarow"}], "]"}], "]"}], 
+           ",", "1"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"10", ",", "percentavfootfalldatarow"}], "]"}], "]"}], 
+           ",", "1"}], "}"}]}], "}"}], ",", "percentavfootfallstyle"}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavrf1", "=", 
+     RowBox[{"ListLinePlot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"13", ",", "percentavfootfalldatarow"}], "]"}], "]"}], 
+           ",", "3"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"14", ",", "percentavfootfalldatarow"}], "]"}], "]"}], 
+           ",", "3"}], "}"}]}], "}"}], ",", "percentavfootfallstyle"}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavg1", "=", 
+     RowBox[{"Show", "[", 
+      RowBox[{"pavrf1", ",", "pavlh1", ",", "pavlf1", ",", "pavrh1"}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavrh2", "=", 
+     RowBox[{"ListLinePlot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"3", ",", "percentavfootfalldatarow"}], "]"}], "]"}], 
+           ",", "4"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"4", ",", "percentavfootfalldatarow"}], "]"}], "]"}], 
+           ",", "4"}], "}"}]}], "}"}], ",", "percentavfootfallstyle"}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavlf2", "=", 
+     RowBox[{"ListLinePlot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"7", ",", "percentavfootfalldatarow"}], "]"}], "]"}], 
+           ",", "2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"8", ",", "percentavfootfalldatarow"}], "]"}], "]"}], 
+           ",", "2"}], "}"}]}], "}"}], ",", "percentavfootfallstyle"}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavlh2", "=", 
+     RowBox[{"ListLinePlot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"11", ",", "percentavfootfalldatarow"}], "]"}], "]"}], 
+           ",", "1"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"12", ",", "percentavfootfalldatarow"}], "]"}], "]"}], 
+           ",", "1"}], "}"}]}], "}"}], ",", "percentavfootfallstyle"}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavrf2", "=", 
+     RowBox[{"ListLinePlot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"15", ",", "percentavfootfalldatarow"}], "]"}], "]"}], 
+           ",", "3"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"16", ",", "percentavfootfalldatarow"}], "]"}], "]"}], 
+           ",", "3"}], "}"}]}], "}"}], ",", "percentavfootfallstyle"}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavg2", "=", 
+     RowBox[{"Show", "[", 
+      RowBox[{"pavrf2", ",", "pavlh2", ",", "pavlf2", ",", "pavrh2"}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"PercentAveragefootfall", "=", 
+    RowBox[{"Show", "[", 
+     RowBox[{"pavg1", ",", "pavg2"}], "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.6627291341832547`*^9, 3.6627291419236994`*^9}, {
+   3.6627304732253637`*^9, 3.6627304756654143`*^9}, {3.6627305203824177`*^9, 
+   3.6627306027162657`*^9}, {3.6627309961170616`*^9, 3.662731007847971*^9}, {
+   3.6627318389829416`*^9, 3.662731858655097*^9}, {3.6627320011836905`*^9, 
+   3.6627320256129856`*^9}, 3.6627349658022327`*^9, {3.662735230947435*^9, 
+   3.662735276889841*^9}, {3.662735525616906*^9, 3.662735528767189*^9}, {
+   3.6627357803593025`*^9, 3.6627357891906834`*^9}, {3.672495522848201*^9, 
+   3.672495573022071*^9}, {3.6724956275581903`*^9, 3.6724956462212577`*^9}, {
+   3.6724956880306487`*^9, 3.672495710132913*^9}, {3.7089710982802515`*^9, 
+   3.7089711454165835`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{{{}, {{}, {}, 
+      {GrayLevel[0.5], PointSize[0.019444444444444445`], Thickness[0.01], 
+       LineBox[{{-28.9936, 3.}, {12.00204, 
+        3.}}]}}, {}, {}, {{}, {}}}, {{}, {{}, {}, 
+      {GrayLevel[0.5], PointSize[0.019444444444444445`], Thickness[0.01], 
+       LineBox[{{-28.5588, 1.}, {23.19553, 
+        1.}}]}}, {}, {}, {{}, {}}}, {{}, {{}, {}, 
+      {GrayLevel[0.5], PointSize[0.019444444444444445`], Thickness[0.01], 
+       LineBox[{{-7.45967, 2.}, {58.27016, 
+        2.}}]}}, {}, {}, {{}, {}}}, {{}, {{}, {}, 
+      {GrayLevel[0.5], PointSize[0.019444444444444445`], Thickness[0.01], 
+       LineBox[{{0., 4.}, {69.60089, 
+        4.}}]}}, {}, {}, {{}, {}}}}, {{{}, {{}, {}, 
+      {GrayLevel[0.5], PointSize[0.019444444444444445`], Thickness[0.01], 
+       LineBox[{{38.41146, 3.}, {200., 
+        3.}}]}}, {}, {}, {{}, {}}}, {{}, {{}, {}, 
+      {GrayLevel[0.5], PointSize[0.019444444444444445`], Thickness[0.01], 
+       LineBox[{{48.13458, 1.}, {200., 
+        1.}}]}}, {}, {}, {{}, {}}}, {{}, {{}, {}, 
+      {GrayLevel[0.5], PointSize[0.019444444444444445`], Thickness[0.01], 
+       LineBox[{{86.51016, 2.}, {200., 
+        2.}}]}}, {}, {}, {{}, {}}}, {{}, {{}, {}, 
+      {GrayLevel[0.5], PointSize[0.019444444444444445`], Thickness[0.01], 
+       LineBox[{{100., 4.}, {200., 4.}}]}}, {}, {}, {{}, {}}}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{True, False}, {True, False}},
+  FrameLabel->{{None, None}, {
+     FormBox["\"Percent Stride Cycle\"", TraditionalForm], None}},
+  FrameTicks->{{{{1, 
+       FormBox["1", TraditionalForm]}, {2, 
+       FormBox["2", TraditionalForm]}, {3, 
+       FormBox["3", TraditionalForm]}, {4, 
+       FormBox["4", TraditionalForm]}}, {{1, 
+       FormBox["1", TraditionalForm]}, {2, 
+       FormBox["2", TraditionalForm]}, {3, 
+       FormBox["3", TraditionalForm]}, {4, 
+       FormBox["4", TraditionalForm]}}}, {{{0, 
+       FormBox["0", TraditionalForm]}, {10, 
+       FormBox["10", TraditionalForm]}, {20, 
+       FormBox["20", TraditionalForm]}, {30, 
+       FormBox["30", TraditionalForm]}, {40, 
+       FormBox["40", TraditionalForm]}, {50, 
+       FormBox["50", TraditionalForm]}, {60, 
+       FormBox["60", TraditionalForm]}, {70, 
+       FormBox["70", TraditionalForm]}, {80, 
+       FormBox["80", TraditionalForm]}, {90, 
+       FormBox["90", TraditionalForm]}, {100, 
+       FormBox["100", TraditionalForm]}}, {{0, 
+       FormBox["0", TraditionalForm]}, {10, 
+       FormBox["10", TraditionalForm]}, {20, 
+       FormBox["20", TraditionalForm]}, {30, 
+       FormBox["30", TraditionalForm]}, {40, 
+       FormBox["40", TraditionalForm]}, {50, 
+       FormBox["50", TraditionalForm]}, {60, 
+       FormBox["60", TraditionalForm]}, {70, 
+       FormBox["70", TraditionalForm]}, {80, 
+       FormBox["80", TraditionalForm]}, {90, 
+       FormBox["90", TraditionalForm]}, {100, 
+       FormBox["100", TraditionalForm]}}}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  ImageSize->{743., Automatic},
+  LabelStyle->{
+    GrayLevel[0], Larger},
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{0, 100}, {0, 5}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{0, 0}, {0, 0}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{
+  3.662728756837739*^9, 3.6627288860488453`*^9, 3.6627289756996565`*^9, 
+   3.6627304771523237`*^9, {3.6627309985184045`*^9, 3.6627310115139685`*^9}, 
+   3.6627320274776363`*^9, 3.6627352898170714`*^9, 3.6627355356153708`*^9, 
+   3.662735790624185*^9, 3.6685146961327653`*^9, 3.668514753721059*^9, 
+   3.668516557353221*^9, 3.668516633652585*^9, {3.672495596837433*^9, 
+   3.6724956018307185`*^9}, 3.6724956468662944`*^9, 3.67249571077195*^9, {
+   3.6953904935611625`*^9, 3.6953905104991913`*^9}, {3.695391227812318*^9, 
+   3.695391251694351*^9}, 3.695391474596716*^9, 3.7089709568584046`*^9, {
+   3.7089710918636713`*^9, 3.708971146687482*^9}, 3.708971765126072*^9, 
+   3.7390407771504607`*^9, 3.740898477713453*^9, 3.741591232918435*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+  "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+    "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", 
+   "**"}], "******)"}]], "Input",
+ CellChangeTimes->{{3.662729086062812*^9, 3.6627290924201717`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"Mean", " ", "footfall"}], "+", 
+    RowBox[{"/", 
+     RowBox[{"-", " ", "SD"}]}]}], "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"percentavsdfootfallstyle", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"PlotStyle", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"Black", ",", 
+          RowBox[{"Thickness", "[", "0.003", "]"}]}], "}"}]}], ",", 
+       RowBox[{"Frame", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"True", ",", "False"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"True", ",", "False"}], "}"}]}], "}"}]}], ",", 
+       RowBox[{"FrameTicks", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+           "0", ",", "10", ",", "20", ",", "30", ",", "40", ",", "50", ",", 
+            "60", ",", "70", ",", "80", ",", "90", ",", "100"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"1", ",", "2", ",", "3", ",", "4"}], "}"}]}], "}"}]}], ",", 
+       RowBox[{"FrameLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"\"\<Percent Stride Cycle\>\"", ",", "None"}], "}"}]}], ",", 
+       RowBox[{"LabelStyle", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"Black", ",", "Larger"}], "}"}]}], ",", 
+       RowBox[{"PlotRange", "->", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0", ",", "100"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", "5"}], "}"}]}], "}"}]}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavsdrh1a", "=", 
+     RowBox[{"ListLinePlot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"1", ",", "percentavminussdfootfalldatarow"}], "]"}], 
+            "]"}], ",", "4"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"1", ",", "percentavplussdfootfalldatarow"}], "]"}], 
+            "]"}], ",", "4"}], "}"}]}], "}"}], ",", 
+       "percentavsdfootfallstyle"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavsdrh1b", "=", 
+     RowBox[{"ListLinePlot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"2", ",", "percentavminussdfootfalldatarow"}], "]"}], 
+            "]"}], ",", "4"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"2", ",", "percentavplussdfootfalldatarow"}], "]"}], 
+            "]"}], ",", "4"}], "}"}]}], "}"}], ",", 
+       "percentavsdfootfallstyle"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavsdrh1", "=", 
+     RowBox[{"Show", "[", 
+      RowBox[{"pavsdrh1a", ",", "pavsdrh1b"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavsdlf1a", "=", 
+     RowBox[{"ListLinePlot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"5", ",", "percentavminussdfootfalldatarow"}], "]"}], 
+            "]"}], ",", "2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"5", ",", "percentavplussdfootfalldatarow"}], "]"}], 
+            "]"}], ",", "2"}], "}"}]}], "}"}], ",", 
+       "percentavsdfootfallstyle"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavsdlf1b", "=", 
+     RowBox[{"ListLinePlot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"6", ",", "percentavminussdfootfalldatarow"}], "]"}], 
+            "]"}], ",", "2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"6", ",", "percentavplussdfootfalldatarow"}], "]"}], 
+            "]"}], ",", "2"}], "}"}]}], "}"}], ",", 
+       "percentavsdfootfallstyle"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavsdlf1", "=", 
+     RowBox[{"Show", "[", 
+      RowBox[{"pavsdlf1a", ",", "pavsdlf1b"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavsdlh1a", "=", 
+     RowBox[{"ListLinePlot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"9", ",", "percentavminussdfootfalldatarow"}], "]"}], 
+            "]"}], ",", "1"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"9", ",", "percentavplussdfootfalldatarow"}], "]"}], 
+            "]"}], ",", "1"}], "}"}]}], "}"}], ",", 
+       "percentavsdfootfallstyle"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavsdlh1b", "=", 
+     RowBox[{"ListLinePlot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"10", ",", "percentavminussdfootfalldatarow"}], "]"}], 
+            "]"}], ",", "1"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"10", ",", "percentavplussdfootfalldatarow"}], "]"}], 
+            "]"}], ",", "1"}], "}"}]}], "}"}], ",", 
+       "percentavsdfootfallstyle"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavsdlh1", "=", 
+     RowBox[{"Show", "[", 
+      RowBox[{"pavsdlh1a", ",", "pavsdlh1b"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavsdrf1a", "=", 
+     RowBox[{"ListLinePlot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"13", ",", "percentavminussdfootfalldatarow"}], "]"}], 
+            "]"}], ",", "3"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"13", ",", "percentavplussdfootfalldatarow"}], "]"}], 
+            "]"}], ",", "3"}], "}"}]}], "}"}], ",", 
+       "percentavsdfootfallstyle"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavsdrf1b", "=", 
+     RowBox[{"ListLinePlot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"14", ",", "percentavminussdfootfalldatarow"}], "]"}], 
+            "]"}], ",", "3"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"14", ",", "percentavplussdfootfalldatarow"}], "]"}], 
+            "]"}], ",", "3"}], "}"}]}], "}"}], ",", 
+       "percentavsdfootfallstyle"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavsdrf1", "=", 
+     RowBox[{"Show", "[", 
+      RowBox[{"pavsdrf1a", ",", "pavsdrf1b"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavsdg1", "=", 
+     RowBox[{"Show", "[", 
+      RowBox[{"pavsdrf1", ",", "pavsdlh1", ",", "pavsdlf1", ",", "pavsdrh1"}],
+       "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavsdrh2a", "=", 
+     RowBox[{"ListLinePlot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"3", ",", "percentavminussdfootfalldatarow"}], "]"}], 
+            "]"}], ",", "4"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"3", ",", "percentavplussdfootfalldatarow"}], "]"}], 
+            "]"}], ",", "4"}], "}"}]}], "}"}], ",", 
+       "percentavsdfootfallstyle"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavsdrh2b", "=", 
+     RowBox[{"ListLinePlot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"4", ",", "percentavminussdfootfalldatarow"}], "]"}], 
+            "]"}], ",", "4"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"4", ",", "percentavplussdfootfalldatarow"}], "]"}], 
+            "]"}], ",", "4"}], "}"}]}], "}"}], ",", 
+       "percentavsdfootfallstyle"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavsdrh2", "=", 
+     RowBox[{"Show", "[", 
+      RowBox[{"pavsdrh2a", ",", "pavsdrh2b"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavsdlf2a", "=", 
+     RowBox[{"ListLinePlot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"7", ",", "percentavminussdfootfalldatarow"}], "]"}], 
+            "]"}], ",", "2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"7", ",", "percentavplussdfootfalldatarow"}], "]"}], 
+            "]"}], ",", "2"}], "}"}]}], "}"}], ",", 
+       "percentavsdfootfallstyle"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavsdlf2b", "=", 
+     RowBox[{"ListLinePlot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"8", ",", "percentavminussdfootfalldatarow"}], "]"}], 
+            "]"}], ",", "2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"8", ",", "percentavplussdfootfalldatarow"}], "]"}], 
+            "]"}], ",", "2"}], "}"}]}], "}"}], ",", 
+       "percentavsdfootfallstyle"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavsdlf2", "=", 
+     RowBox[{"Show", "[", 
+      RowBox[{"pavsdlf2a", ",", "pavsdlf2b"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavsdlh2a", "=", 
+     RowBox[{"ListLinePlot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"11", ",", "percentavminussdfootfalldatarow"}], "]"}], 
+            "]"}], ",", "1"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"11", ",", "percentavplussdfootfalldatarow"}], "]"}], 
+            "]"}], ",", "1"}], "}"}]}], "}"}], ",", 
+       "percentavsdfootfallstyle"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavsdlh2b", "=", 
+     RowBox[{"ListLinePlot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"12", ",", "percentavminussdfootfalldatarow"}], "]"}], 
+            "]"}], ",", "1"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"12", ",", "percentavplussdfootfalldatarow"}], "]"}], 
+            "]"}], ",", "1"}], "}"}]}], "}"}], ",", 
+       "percentavsdfootfallstyle"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavsdlh2", "=", 
+     RowBox[{"Show", "[", 
+      RowBox[{"pavsdlh2a", ",", "pavsdlh2b"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavsdrf2a", "=", 
+     RowBox[{"ListLinePlot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"15", ",", "percentavminussdfootfalldatarow"}], "]"}], 
+            "]"}], ",", "3"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"15", ",", "percentavplussdfootfalldatarow"}], "]"}], 
+            "]"}], ",", "3"}], "}"}]}], "}"}], ",", 
+       "percentavsdfootfallstyle"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavsdrf2b", "=", 
+     RowBox[{"ListLinePlot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"16", ",", "percentavminussdfootfalldatarow"}], "]"}], 
+            "]"}], ",", "3"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"rawfootfalldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"16", ",", "percentavplussdfootfalldatarow"}], "]"}], 
+            "]"}], ",", "3"}], "}"}]}], "}"}], ",", 
+       "percentavsdfootfallstyle"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavsdrf2", "=", 
+     RowBox[{"Show", "[", 
+      RowBox[{"pavsdrf2a", ",", "pavsdrf2b"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pavsdg2", "=", 
+     RowBox[{"Show", "[", 
+      RowBox[{"pavsdrf2", ",", "pavsdlh2", ",", "pavsdlf2", ",", "pavsdrh2"}],
+       "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"PercentplusminusSDfootfall", "=", 
+    RowBox[{"Show", "[", 
+     RowBox[{"pavsdg1", ",", "pavsdg2"}], "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.662729116009843*^9, 3.6627291245708184`*^9}, 
+   3.6627291590760965`*^9, {3.6627292953963933`*^9, 3.6627293002367115`*^9}, {
+   3.662729358984746*^9, 3.66272937413057*^9}, {3.662729498284731*^9, 
+   3.6627301683167334`*^9}, {3.6627302412793255`*^9, 
+   3.6627303291785436`*^9}, {3.6627303606900783`*^9, 3.662730368436594*^9}, {
+   3.6627304983389378`*^9, 3.6627305008263073`*^9}, {3.6627320559716115`*^9, 
+   3.6627320664464245`*^9}, {3.662735569165513*^9, 3.662735684513178*^9}, {
+   3.662735717329044*^9, 3.6627357677660484`*^9}, {3.662736296188292*^9, 
+   3.662736299170735*^9}, {3.6627363419374714`*^9, 3.662736342770769*^9}, {
+   3.672495731903158*^9, 3.672495783945135*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{{{{}, {{}, {}, 
+       {GrayLevel[0], PointSize[0.019444444444444445`], Thickness[0.003], 
+        LineBox[{{-50.539, 3.}, {-7.44812, 
+         3.}}]}}, {}, {}, {{}, {}}}, {{}, {{}, {}, 
+       {GrayLevel[0], PointSize[0.019444444444444445`], Thickness[0.003], 
+        LineBox[{{6.723128, 3.}, {17.28095, 
+         3.}}]}}, {}, {}, {{}, {}}}}, {{{}, {{}, {}, 
+       {GrayLevel[0], PointSize[0.019444444444444445`], Thickness[0.003], 
+        LineBox[{{-49.7413, 1.}, {-7.37625, 
+         1.}}]}}, {}, {}, {{}, {}}}, {{}, {{}, {}, 
+       {GrayLevel[0], PointSize[0.019444444444444445`], Thickness[0.003], 
+        LineBox[{{14.69875, 1.}, {31.69231, 
+         1.}}]}}, {}, {}, {{}, {}}}}, {{{}, {{}, {}, 
+       {GrayLevel[0], PointSize[0.019444444444444445`], Thickness[0.003], 
+        LineBox[{{-10.3295, 2.}, {-4.58981, 
+         2.}}]}}, {}, {}, {{}, {}}}, {{}, {{}, {}, 
+       {GrayLevel[0], PointSize[0.019444444444444445`], Thickness[0.003], 
+        LineBox[{{47.01389, 2.}, {69.52643, 
+         2.}}]}}, {}, {}, {{}, {}}}}, {{{}, {{}, {}, 
+       {GrayLevel[0], PointSize[0.019444444444444445`], Thickness[0.003], 
+        LineBox[{{0., 4.}, {0., 4.}}]}}, {}, {}, {{}, {}}}, {{}, {{}, {}, 
+       {GrayLevel[0], PointSize[0.019444444444444445`], Thickness[0.003], 
+        LineBox[{{63.86865, 4.}, {75.33313, 
+         4.}}]}}, {}, {}, {{}, {}}}}}, {{{{}, {{}, {}, 
+       {GrayLevel[0], PointSize[0.019444444444444445`], Thickness[0.003], 
+        LineBox[{{33.36243, 3.}, {43.4605, 
+         3.}}]}}, {}, {}, {{}, {}}}, {{}, {{}, {}, 
+       {GrayLevel[0], PointSize[0.019444444444444445`], Thickness[0.003], 
+        LineBox[{{200., 3.}, {200., 
+         3.}}]}}, {}, {}, {{}, {}}}}, {{{}, {{}, {}, 
+       {GrayLevel[0], PointSize[0.019444444444444445`], Thickness[0.003], 
+        LineBox[{{43.79478, 1.}, {52.47439, 
+         1.}}]}}, {}, {}, {{}, {}}}, {{}, {{}, {}, 
+       {GrayLevel[0], PointSize[0.019444444444444445`], Thickness[0.003], 
+        LineBox[{{200., 1.}, {200., 
+         1.}}]}}, {}, {}, {{}, {}}}}, {{{}, {{}, {}, 
+       {GrayLevel[0], PointSize[0.019444444444444445`], Thickness[0.003], 
+        LineBox[{{80.45008, 2.}, {92.57024, 
+         2.}}]}}, {}, {}, {{}, {}}}, {{}, {{}, {}, 
+       {GrayLevel[0], PointSize[0.019444444444444445`], Thickness[0.003], 
+        LineBox[{{200., 2.}, {200., 
+         2.}}]}}, {}, {}, {{}, {}}}}, {{{}, {{}, {}, 
+       {GrayLevel[0], PointSize[0.019444444444444445`], Thickness[0.003], 
+        LineBox[{{100., 4.}, {100., 4.}}]}}, {}, {}, {{}, {}}}, {{}, {{}, {}, 
+       {GrayLevel[0], PointSize[0.019444444444444445`], Thickness[0.003], 
+        LineBox[{{200., 4.}, {200., 4.}}]}}, {}, {}, {{}, {}}}}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{True, False}, {True, False}},
+  FrameLabel->{{None, None}, {
+     FormBox["\"Percent Stride Cycle\"", TraditionalForm], None}},
+  FrameTicks->{{{{1, 
+       FormBox["1", TraditionalForm]}, {2, 
+       FormBox["2", TraditionalForm]}, {3, 
+       FormBox["3", TraditionalForm]}, {4, 
+       FormBox["4", TraditionalForm]}}, {{1, 
+       FormBox["1", TraditionalForm]}, {2, 
+       FormBox["2", TraditionalForm]}, {3, 
+       FormBox["3", TraditionalForm]}, {4, 
+       FormBox["4", TraditionalForm]}}}, {{{0, 
+       FormBox["0", TraditionalForm]}, {10, 
+       FormBox["10", TraditionalForm]}, {20, 
+       FormBox["20", TraditionalForm]}, {30, 
+       FormBox["30", TraditionalForm]}, {40, 
+       FormBox["40", TraditionalForm]}, {50, 
+       FormBox["50", TraditionalForm]}, {60, 
+       FormBox["60", TraditionalForm]}, {70, 
+       FormBox["70", TraditionalForm]}, {80, 
+       FormBox["80", TraditionalForm]}, {90, 
+       FormBox["90", TraditionalForm]}, {100, 
+       FormBox["100", TraditionalForm]}}, {{0, 
+       FormBox["0", TraditionalForm]}, {10, 
+       FormBox["10", TraditionalForm]}, {20, 
+       FormBox["20", TraditionalForm]}, {30, 
+       FormBox["30", TraditionalForm]}, {40, 
+       FormBox["40", TraditionalForm]}, {50, 
+       FormBox["50", TraditionalForm]}, {60, 
+       FormBox["60", TraditionalForm]}, {70, 
+       FormBox["70", TraditionalForm]}, {80, 
+       FormBox["80", TraditionalForm]}, {90, 
+       FormBox["90", TraditionalForm]}, {100, 
+       FormBox["100", TraditionalForm]}}}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  LabelStyle->{
+    GrayLevel[0], Larger},
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{0, 100}, {0, 5}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{0, 0}, {0, 0}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{{3.662729637624961*^9, 3.662729646599748*^9}, 
+   3.662730334422192*^9, 3.6627303727532268`*^9, 3.6627305026670084`*^9, 
+   3.662731012099967*^9, 3.6627320682870054`*^9, 3.662735688784875*^9, {
+   3.6627357340260963`*^9, 3.6627357695504465`*^9}, 3.6627363011966915`*^9, 
+   3.66273634461121*^9, 3.6685146963167753`*^9, 3.668514753862067*^9, 
+   3.6685165575082297`*^9, 3.668516633787593*^9, 3.6724957865382833`*^9, {
+   3.695390493871163*^9, 3.6953905106291914`*^9}, {3.695391227942318*^9, 
+   3.6953912518243513`*^9}, 3.695391474726716*^9, 3.70897115422649*^9, 
+   3.708971771415229*^9, 3.7390408181422844`*^9, 3.7408984946544867`*^9, 
+   3.741591237063523*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+  "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+    "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+    "**", "**"}], "*****)"}]], "Input",
+ CellChangeTimes->{{3.6627303950944967`*^9, 3.662730397998254*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"AVERAGE", " ", "+", 
+    RowBox[{
+     RowBox[{"/", 
+      RowBox[{"-", " ", "SD"}]}], " ", "plot"}]}], "*)"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"PercentAverageplusminusSDfootfall", "=", 
+   RowBox[{"Show", "[", 
+    RowBox[{"PercentAveragefootfall", ",", "PercentplusminusSDfootfall"}], 
+    "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.653026659720934*^9, 3.6530266898606577`*^9}, {
+   3.6530563289999194`*^9, 3.653056340089554*^9}, {3.653056456415207*^9, 
+   3.6530564616635075`*^9}, {3.6537171676541433`*^9, 3.6537171756295996`*^9}, 
+   3.6627304083497763`*^9, {3.662730655727036*^9, 3.662730660060545*^9}, {
+   3.6627309177126083`*^9, 3.662730919815989*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{{{{}, {{}, {}, 
+       {GrayLevel[0.5], PointSize[0.019444444444444445`], Thickness[0.01], 
+        LineBox[{{-28.9936, 3.}, {12.00204, 
+         3.}}]}}, {}, {}, {{}, {}}}, {{}, {{}, {}, 
+       {GrayLevel[0.5], PointSize[0.019444444444444445`], Thickness[0.01], 
+        LineBox[{{-28.5588, 1.}, {23.19553, 
+         1.}}]}}, {}, {}, {{}, {}}}, {{}, {{}, {}, 
+       {GrayLevel[0.5], PointSize[0.019444444444444445`], Thickness[0.01], 
+        LineBox[{{-7.45967, 2.}, {58.27016, 
+         2.}}]}}, {}, {}, {{}, {}}}, {{}, {{}, {}, 
+       {GrayLevel[0.5], PointSize[0.019444444444444445`], Thickness[0.01], 
+        LineBox[{{0., 4.}, {69.60089, 
+         4.}}]}}, {}, {}, {{}, {}}}}, {{{}, {{}, {}, 
+       {GrayLevel[0.5], PointSize[0.019444444444444445`], Thickness[0.01], 
+        LineBox[{{38.41146, 3.}, {200., 
+         3.}}]}}, {}, {}, {{}, {}}}, {{}, {{}, {}, 
+       {GrayLevel[0.5], PointSize[0.019444444444444445`], Thickness[0.01], 
+        LineBox[{{48.13458, 1.}, {200., 
+         1.}}]}}, {}, {}, {{}, {}}}, {{}, {{}, {}, 
+       {GrayLevel[0.5], PointSize[0.019444444444444445`], Thickness[0.01], 
+        LineBox[{{86.51016, 2.}, {200., 
+         2.}}]}}, {}, {}, {{}, {}}}, {{}, {{}, {}, 
+       {GrayLevel[0.5], PointSize[0.019444444444444445`], Thickness[0.01], 
+        LineBox[{{100., 4.}, {200., 
+         4.}}]}}, {}, {}, {{}, {}}}}}, {{{{{}, {{}, {}, 
+        {GrayLevel[0], PointSize[0.019444444444444445`], Thickness[0.003], 
+         LineBox[{{-50.539, 3.}, {-7.44812, 
+          3.}}]}}, {}, {}, {{}, {}}}, {{}, {{}, {}, 
+        {GrayLevel[0], PointSize[0.019444444444444445`], Thickness[0.003], 
+         LineBox[{{6.723128, 3.}, {17.28095, 
+          3.}}]}}, {}, {}, {{}, {}}}}, {{{}, {{}, {}, 
+        {GrayLevel[0], PointSize[0.019444444444444445`], Thickness[0.003], 
+         LineBox[{{-49.7413, 1.}, {-7.37625, 
+          1.}}]}}, {}, {}, {{}, {}}}, {{}, {{}, {}, 
+        {GrayLevel[0], PointSize[0.019444444444444445`], Thickness[0.003], 
+         LineBox[{{14.69875, 1.}, {31.69231, 
+          1.}}]}}, {}, {}, {{}, {}}}}, {{{}, {{}, {}, 
+        {GrayLevel[0], PointSize[0.019444444444444445`], Thickness[0.003], 
+         LineBox[{{-10.3295, 2.}, {-4.58981, 
+          2.}}]}}, {}, {}, {{}, {}}}, {{}, {{}, {}, 
+        {GrayLevel[0], PointSize[0.019444444444444445`], Thickness[0.003], 
+         LineBox[{{47.01389, 2.}, {69.52643, 
+          2.}}]}}, {}, {}, {{}, {}}}}, {{{}, {{}, {}, 
+        {GrayLevel[0], PointSize[0.019444444444444445`], Thickness[0.003], 
+         LineBox[{{0., 4.}, {0., 4.}}]}}, {}, {}, {{}, {}}}, {{}, {{}, {}, 
+        {GrayLevel[0], PointSize[0.019444444444444445`], Thickness[0.003], 
+         LineBox[{{63.86865, 4.}, {75.33313, 
+          4.}}]}}, {}, {}, {{}, {}}}}}, {{{{}, {{}, {}, 
+        {GrayLevel[0], PointSize[0.019444444444444445`], Thickness[0.003], 
+         LineBox[{{33.36243, 3.}, {43.4605, 
+          3.}}]}}, {}, {}, {{}, {}}}, {{}, {{}, {}, 
+        {GrayLevel[0], PointSize[0.019444444444444445`], Thickness[0.003], 
+         LineBox[{{200., 3.}, {200., 
+          3.}}]}}, {}, {}, {{}, {}}}}, {{{}, {{}, {}, 
+        {GrayLevel[0], PointSize[0.019444444444444445`], Thickness[0.003], 
+         LineBox[{{43.79478, 1.}, {52.47439, 
+          1.}}]}}, {}, {}, {{}, {}}}, {{}, {{}, {}, 
+        {GrayLevel[0], PointSize[0.019444444444444445`], Thickness[0.003], 
+         LineBox[{{200., 1.}, {200., 
+          1.}}]}}, {}, {}, {{}, {}}}}, {{{}, {{}, {}, 
+        {GrayLevel[0], PointSize[0.019444444444444445`], Thickness[0.003], 
+         LineBox[{{80.45008, 2.}, {92.57024, 
+          2.}}]}}, {}, {}, {{}, {}}}, {{}, {{}, {}, 
+        {GrayLevel[0], PointSize[0.019444444444444445`], Thickness[0.003], 
+         LineBox[{{200., 2.}, {200., 
+          2.}}]}}, {}, {}, {{}, {}}}}, {{{}, {{}, {}, 
+        {GrayLevel[0], PointSize[0.019444444444444445`], Thickness[0.003], 
+         LineBox[{{100., 4.}, {100., 4.}}]}}, {}, {}, {{}, {}}}, {{}, {{}, {}, 
+        {GrayLevel[0], PointSize[0.019444444444444445`], Thickness[0.003], 
+         LineBox[{{200., 4.}, {200., 4.}}]}}, {}, {}, {{}, {}}}}}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{True, False}, {True, False}},
+  FrameLabel->{{None, None}, {
+     FormBox["\"Percent Stride Cycle\"", TraditionalForm], None}},
+  FrameTicks->{{{{1, 
+       FormBox["1", TraditionalForm]}, {2, 
+       FormBox["2", TraditionalForm]}, {3, 
+       FormBox["3", TraditionalForm]}, {4, 
+       FormBox["4", TraditionalForm]}}, {{1, 
+       FormBox["1", TraditionalForm]}, {2, 
+       FormBox["2", TraditionalForm]}, {3, 
+       FormBox["3", TraditionalForm]}, {4, 
+       FormBox["4", TraditionalForm]}}}, {{{0, 
+       FormBox["0", TraditionalForm]}, {10, 
+       FormBox["10", TraditionalForm]}, {20, 
+       FormBox["20", TraditionalForm]}, {30, 
+       FormBox["30", TraditionalForm]}, {40, 
+       FormBox["40", TraditionalForm]}, {50, 
+       FormBox["50", TraditionalForm]}, {60, 
+       FormBox["60", TraditionalForm]}, {70, 
+       FormBox["70", TraditionalForm]}, {80, 
+       FormBox["80", TraditionalForm]}, {90, 
+       FormBox["90", TraditionalForm]}, {100, 
+       FormBox["100", TraditionalForm]}}, {{0, 
+       FormBox["0", TraditionalForm]}, {10, 
+       FormBox["10", TraditionalForm]}, {20, 
+       FormBox["20", TraditionalForm]}, {30, 
+       FormBox["30", TraditionalForm]}, {40, 
+       FormBox["40", TraditionalForm]}, {50, 
+       FormBox["50", TraditionalForm]}, {60, 
+       FormBox["60", TraditionalForm]}, {70, 
+       FormBox["70", TraditionalForm]}, {80, 
+       FormBox["80", TraditionalForm]}, {90, 
+       FormBox["90", TraditionalForm]}, {100, 
+       FormBox["100", TraditionalForm]}}}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  ImageSize->{739., Automatic},
+  LabelStyle->{
+    GrayLevel[0], Larger},
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{0, 100}, {0, 5}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{0, 0}, {0, 0}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{
+  3.66273044146449*^9, {3.6627304862251673`*^9, 3.662730508117445*^9}, 
+   3.662730923821761*^9, 3.662731012253648*^9, 3.6627320742119017`*^9, 
+   3.662735694181017*^9, 3.6627358001794567`*^9, 3.662736307950615*^9, 
+   3.66273635539294*^9, 3.6685146963817797`*^9, 3.6685147538980694`*^9, 
+   3.6685165575522327`*^9, 3.6685166338225946`*^9, 3.6724957917375803`*^9, {
+   3.695390494131163*^9, 3.695390510659191*^9}, {3.695391227982318*^9, 
+   3.695391251854351*^9}, 3.695391474766716*^9, 3.708971162309746*^9, 
+   3.708971777244276*^9, 3.7390408361531982`*^9, 3.740898516671341*^9, 
+   3.7415912397226014`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+  "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+    "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+    "**", "**"}], "*****)"}]], "Input",
+ CellChangeTimes->{{3.6627303950944967`*^9, 3.662730397998254*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", "Export", "*)"}]], "Input",
+ CellChangeTimes->{{3.662730642645051*^9, 3.662730647432889*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+   "dataDirectory", "=", "\"\<YOUR DIRECTORY FOR EXPORTED FIGURES\>\""}], 
+   ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"setpathDataWin", "=", 
+   RowBox[{"StringJoin", "[", 
+    RowBox[{"frogworkpath", ",", "dataDirectory"}], "]"}]}], ";", 
+  RowBox[{"(*", 
+   RowBox[{
+   "windows", " ", "formatted", " ", "path", " ", "as", " ", "string"}], 
+   "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"splitpath", "=", 
+   RowBox[{"FileNameSplit", "[", 
+    RowBox[{"setpathDataWin", ",", 
+     RowBox[{"OperatingSystem", "\[Rule]", "\"\<Windows\>\""}]}], 
+    RowBox[{"(*", 
+     RowBox[{
+     "change", " ", "to", " ", "MacOSX", " ", "if", " ", "necessary"}], 
+     "*)"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"setpathData", "=", 
+   RowBox[{"FileNameJoin", "[", 
+    RowBox[{"splitpath", ",", 
+     RowBox[{"OperatingSystem", "\[Rule]", "os"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SetDirectory", "[", "setpathData", "]"}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", "Average", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{
+   "\"\<Kinematics Paper - Footfall patterns - Version 3.svg\>\"", ",", 
+    "PercentAveragefootfall"}], "]"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"Average", " ", "+", 
+    RowBox[{"/", 
+     RowBox[{"-", " ", "SD"}]}]}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{
+  "\"\<Kinematics Paper - Footfall patterns plus.minus SD - Version \
+3.svg\>\"", ",", "PercentAverageplusminusSDfootfall"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.66273071256728*^9, 3.662730797121583*^9}, {
+   3.662730842061881*^9, 3.6627308582427*^9}, 3.662730931877736*^9, {
+   3.6662584173348017`*^9, 3.666258436112742*^9}, {3.668514725480444*^9, 
+   3.668514727535561*^9}, {3.668514808728205*^9, 3.6685148257751803`*^9}, {
+   3.6724958144848814`*^9, 3.6724958325569153`*^9}, {3.7408986358680058`*^9, 
+   3.7408986394182544`*^9}, {3.7534544583009768`*^9, 3.753454465481167*^9}}],
+
+Cell[BoxData["\<\"Kinematics Paper - Footfall patterns - Version 3.svg\"\>"], \
+"Output",
+ CellChangeTimes->{3.7089718112716475`*^9, 3.739040866980824*^9, 
+  3.7408986079297214`*^9, 3.7408986442248664`*^9, 3.7415912503877487`*^9}],
+
+Cell[BoxData["\<\"Kinematics Paper - Footfall patterns plus.minus SD - \
+Version 3.svg\"\>"], "Output",
+ CellChangeTimes->{3.7089718112716475`*^9, 3.739040866980824*^9, 
+  3.7408986079297214`*^9, 3.7408986442248664`*^9, 3.741591250827549*^9}]
+}, Open  ]]
+},
+WindowSize->{1034, 685},
+WindowMargins->{{Automatic, 85}, {27, Automatic}},
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 775, 17, 88, "Input"],
+Cell[1335, 39, 292, 6, 30, "Input"],
+Cell[CellGroupData[{
+Cell[1652, 49, 10429, 235, 1418, "Input"],
+Cell[12084, 286, 191, 4, 30, "Output"],
+Cell[12278, 292, 498, 10, 30, "Output"]
+}, Open  ]],
+Cell[12791, 305, 292, 6, 30, "Input"],
+Cell[13086, 313, 781, 20, 126, "Input"],
+Cell[13870, 335, 292, 6, 30, "Input"],
+Cell[CellGroupData[{
+Cell[14187, 345, 8171, 218, 563, "Input"],
+Cell[22361, 565, 4614, 94, 502, "Output"]
+}, Open  ]],
+Cell[26990, 662, 299, 6, 30, "Input"],
+Cell[CellGroupData[{
+Cell[27314, 672, 15652, 421, 1399, "Input"],
+Cell[42969, 1095, 5863, 114, 265, "Output"]
+}, Open  ]],
+Cell[48847, 1212, 310, 6, 30, "Input"],
+Cell[CellGroupData[{
+Cell[49182, 1222, 764, 16, 88, "Input"],
+Cell[49949, 1240, 7253, 139, 499, "Output"]
+}, Open  ]],
+Cell[57217, 1382, 310, 6, 30, "Input"],
+Cell[57530, 1390, 122, 2, 30, "Input"],
+Cell[CellGroupData[{
+Cell[57677, 1396, 2145, 51, 240, "Input"],
+Cell[59825, 1449, 230, 3, 30, "Output"],
+Cell[60058, 1454, 242, 3, 30, "Output"]
+}, Open  ]]
+}
+]
+*)
+

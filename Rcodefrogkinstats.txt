@@ -1,0 +1,52 @@
+setwd("YOUR DIRECTORY WHERE SPEEDVANGLE.CSV FILE IS STORED")
+dat <- read.csv("speedvangle-Version3.csv")
+summary(dat)
+library(nlme)
+mod1 <- lme(Speed..x. ~ Angle..y.,data=dat,random=~1|Frog)
+summary(mod1)
+anova(mod1)
+plot(dat$Speed..x., dat$Angle..y., type="p", xlab="Speed", ylab="Pelvic angle")
+
+
+setwd("YOUR DIRECTORY WHERE ABSOLUTESPEEDVANGLE.CSV FILE IS STORED")
+dat <- read.csv("absolutespeedvangle.csv")
+summary(dat1)
+library(nlme)
+mod1 <- lme(Speed..x. ~ Angle..y.,data=dat,random=~1|Frog)
+summary(mod11)
+anova(mod11)
+plot(dat$Speed..x., dat$Angle..y., type="p", xlab="Speed", ylab="Pelvic angle")
+
+
+setwd("YOUR DIRECTORY WHERE ANGLEVTMT.CSV IS STORED")
+dat1 <- read.csv("anglevTMT-Version2.csv")
+summary(dat2)
+library(nlme)
+mod11 <- lme(TMTgain ~ PAngle,data=dat1,random=~1|Frog)
+summary(mod12)
+anova(mod12)
+
+
+setwd("YOUR DIRECTORY WHERE ANGLEVANK.CSV IS STORED")
+dat2 <- read.csv("anglevANK-Version2.csv")
+summary(dat3)
+library(nlme)
+mod12 <- lme(ANKgain ~ PAngle,data=dat2,random=~1|Frog)
+summary(mod13)
+anova(mod13)
+
+
+setwd("YOUR DIRECTORY WHERE ANGLEVKNE.CSV IS STORED")
+dat3 <- read.csv("anglevKNE-Version2.csv")
+summary(dat4)
+library(nlme)
+mod13 <- lme(KNEgain ~ PAngle,data=dat3,random=~1|Frog)
+summary(mod14)
+anova(mod14)
+
+
+1-(var(residuals(mod1))/(var(getResponse((mod1)))))
+1-(var(residuals(mod11))/(var(getResponse((mod11)))))
+1-(var(residuals(mod12))/(var(getResponse((mod12)))))
+1-(var(residuals(mod13))/(var(getResponse((mod13)))))
+1-(var(residuals(mod14))/(var(getResponse((mod14)))))

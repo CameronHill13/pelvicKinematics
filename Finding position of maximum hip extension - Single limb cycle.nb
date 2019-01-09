@@ -1,0 +1,862 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     34414,        854]
+NotebookOptionsPosition[     31984,        783]
+NotebookOutlinePosition[     32332,        798]
+CellTagsIndexPosition[     32289,        795]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"SET", " ", "DIRECTORY"}], "*)"}], "\n", 
+  RowBox[{"(*", 
+   RowBox[{"DETERMINE", " ", "THE", " ", 
+    RowBox[{"AUTHOR", "'"}], "s", " ", "operating", " ", "system", " ", "and",
+     " ", "parce", " ", "accordingly"}], "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"os", "=", "$OperatingSystem"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"frogworkpath", "=", "\"\<F:\\\\FrogWork\\\\\>\""}], ";"}], 
+    RowBox[{"(*", 
+     RowBox[{"FOR", " ", "FROGDRIVE02"}], "*)"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"frogworkpath", "=", "\"\<Z:\\\\\>\""}], ";"}], 
+    RowBox[{"(*", 
+     RowBox[{"FOR", " ", "SERVER"}], "*)"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"frogworkpath", "=", "\"\<E:\\\\FrogWork\\\\\>\""}], ";"}], 
+    RowBox[{"(*", 
+     RowBox[{"FOR", " ", "FROGDRIVE02", " ", "on", " ", 
+      RowBox[{"Amber", "'"}], "s", " ", "laptop"}], "*)"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+     "frogworkpath", "=", 
+      "\"\<C:\\\\Users\\\\Amber_Collings\\\\Desktop\\\\RVC\\\\Frog Work\\\\\>\
+\""}], ";"}], " ", 
+    RowBox[{"(*", 
+     RowBox[{"FOR", " ", 
+      RowBox[{"AMBER", "'"}], "S", " ", "LAPTOP"}], "*)"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+     "frogworkpath", "=", 
+      "\"\<C:\\\\Users\\\\Richards Lab\\\\Desktop\\\\FrogDesktopAmber\\\\Frog \
+Work\\\\\>\""}], ";"}], 
+    RowBox[{"(*", 
+     RowBox[{"FOR", " ", "DESKTOP"}], "*)"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"frogworkpath", "=", "\"\<I:\\\\FrogWork\\\\\>\""}], ";"}], 
+    RowBox[{"(*", 
+     RowBox[{"for", " ", 
+      RowBox[{"Chris", "'"}], " ", "PC"}], "*)"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+     "frogworkpath", "=", 
+      "\"\<\\\\Volumes\\\\FrogDrive01\\\\FrogWork\\\\\>\""}], ";"}], 
+    RowBox[{"(*", 
+     RowBox[{"for", " ", 
+      RowBox[{"Chris", "'"}], " ", "mac"}], "*)"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"frogworkpath", "=", "\"\<D:\\\\FrogWork\\\\\>\""}], ";"}], 
+   RowBox[{"(*", 
+    RowBox[{"for", " ", 
+     RowBox[{"Cam", "'"}], "s", " ", "laptop"}], "*)"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "dataDirectory", "=", 
+     "\"\<Amber\\\\Data\\\\Kinematics Paper - Exported data\\\\3D joint angle \
+data\>\""}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"setpathDataWin", "=", 
+     RowBox[{"StringJoin", "[", 
+      RowBox[{"frogworkpath", ",", "dataDirectory"}], "]"}]}], ";"}], 
+   RowBox[{"(*", 
+    RowBox[{
+    "windows", " ", "formatted", " ", "path", " ", "as", " ", "string"}], 
+    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"splitpath", "=", 
+     RowBox[{"FileNameSplit", "[", 
+      RowBox[{"setpathDataWin", ",", 
+       RowBox[{"OperatingSystem", "\[Rule]", "\"\<Windows\>\""}]}], 
+      RowBox[{"(*", 
+       RowBox[{
+       "change", " ", "to", " ", "MacOSX", " ", "if", " ", "necessary"}], 
+       "*)"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"setpathData", "=", 
+     RowBox[{"FileNameJoin", "[", 
+      RowBox[{"splitpath", ",", 
+       RowBox[{"OperatingSystem", "\[Rule]", "os"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"SetDirectory", "[", "setpathData", "]"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.6581316256770725`*^9, 3.658131641577094*^9}, {
+   3.6581317536272655`*^9, 3.65813180648234*^9}, {3.658131947149558*^9, 
+   3.6581320283956738`*^9}, {3.6581321103197975`*^9, 
+   3.6581321320918283`*^9}, {3.6581321643548746`*^9, 
+   3.6581321748958893`*^9}, {3.6581322113419476`*^9, 3.658132212541949*^9}, {
+   3.664965053588244*^9, 3.664965078724063*^9}, {3.6651579011045055`*^9, 
+   3.6651580059892426`*^9}, {3.665158091074823*^9, 3.6651580926116767`*^9}, {
+   3.6685120449161243`*^9, 3.6685120517475147`*^9}, {3.6951095314101934`*^9, 
+   3.695109538891204*^9}, 3.722897224166443*^9}],
+
+Cell[BoxData["\<\"D:\\\\FrogWork\\\\Amber\\\\Data\\\\Kinematics Paper - \
+Exported data\\\\3D joint angle data\"\>"], "Output",
+ CellChangeTimes->{{3.6581321933569155`*^9, 3.6581322136419506`*^9}, 
+   3.665158036462058*^9, {3.665158093580449*^9, 3.6651581005333915`*^9}, {
+   3.668512040311861*^9, 3.6685120534466124`*^9}, 3.6951095397512054`*^9, 
+   3.7228976589644685`*^9, 3.7280341321994925`*^9, {3.739012506804271*^9, 
+   3.7390125151082544`*^9}, 3.7407347333878016`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+  "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+    "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+    "**", "**", "**", "**", "**"}], "******)"}]], "Input",
+ CellChangeTimes->{{3.6568559187128677`*^9, 3.656855922325074*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+    "IMPORT", " ", "3", "D", " ", "JOINT", " ", "ANGLE", " ", "DATA"}], " ", 
+    "-", " ", "UNFILTERED"}], "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "Hip", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Animal0Trial1Hip", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\<KM01_RUN_02_Hip 3D Joint Angle Data - One Limb Cycle - \
+FILTERED.xlsx\>\"", ",", "\"\<Data\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Animal1Trial1Hip", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\<KM02_RUN_01_Hip 3D Joint Angle Data - One Limb Cycle - \
+FILTERED.xlsx\>\"", ",", "\"\<Data\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Animal1Trial2Hip", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\<KM02_RUN_02_Hip 3D Joint Angle Data - One Limb Cycle - \
+FILTERED.xlsx\>\"", ",", "\"\<Data\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Animal1Trial3Hip", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\<KM02_RUN_09_Hip 3D Joint Angle Data - One Limb Cycle - \
+FILTERED.xlsx\>\"", ",", "\"\<Data\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Animal2Trial1Hip", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\<KM04_RUN_09_Hip 3D Joint Angle Data - One Limb Cycle - \
+FILTERED.xlsx\>\"", ",", "\"\<Data\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Animal2Trial2Hip", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\<KM04_RUN_11_Hip 3D Joint Angle Data - One Limb Cycle - \
+FILTERED.xlsx\>\"", ",", "\"\<Data\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Animal2Trial3Hip", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\<KM04_RUN_12_Hip 3D Joint Angle Data - One Limb Cycle - \
+FILTERED.xlsx\>\"", ",", "\"\<Data\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Animal3Trial1Hip", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\<KM05_RUN_04_Hip 3D Joint Angle Data - One Limb Cycle - \
+FILTERED.xlsx\>\"", ",", "\"\<Data\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Animal3Trial2Hip", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\<KM05_RUN_08_Hip 3D Joint Angle Data - One Limb Cycle - \
+FILTERED.xlsx\>\"", ",", "\"\<Data\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Animal4Trial1Hip", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\<KM06_RUN_11_Hip 3D Joint Angle Data - One Limb Cycle - \
+FILTERED.xlsx\>\"", ",", "\"\<Data\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Animal4Trial2Hip", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\<KM06_RUN_12_Hip 3D Joint Angle Data - One Limb Cycle - \
+FILTERED.xlsx\>\"", ",", "\"\<Data\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Animal4Trial3Hip", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\<KM06_RUN_13_Hip 3D Joint Angle Data - One Limb Cycle - \
+FILTERED.xlsx\>\"", ",", "\"\<Data\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Animal4Trial4Hip", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\<KM06_RUN_15_Hip 3D Joint Angle Data - One Limb Cycle - \
+FILTERED.xlsx\>\"", ",", "\"\<Data\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Animal4Trial5Hip", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\<KM06_RUN_16_Hip 3D Joint Angle Data - One Limb Cycle - \
+FILTERED.xlsx\>\"", ",", "\"\<Data\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Animal5Trial1Hip", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\<KM07_RUN_14_Hip 3D Joint Angle Data - One Limb Cycle - \
+FILTERED.xlsx\>\"", ",", "\"\<Data\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Animal5Trial2Hip", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\<KM07_RUN_16_Hip 3D Joint Angle Data - One Limb Cycle - \
+FILTERED.xlsx\>\"", ",", "\"\<Data\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Animal5Trial3Hip", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\<KM07_RUN_17_Hip 3D Joint Angle Data - One Limb Cycle - \
+FILTERED.xlsx\>\"", ",", "\"\<Data\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Animal6Trial1Hip", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\<KM08_RUN_09_Hip 3D Joint Angle Data - One Limb Cycle - \
+FILTERED.xlsx\>\"", ",", "\"\<Data\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Animal6Trial2Hip", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\<KM08_RUN_10_Hip 3D Joint Angle Data - One Limb Cycle - \
+FILTERED.xlsx\>\"", ",", "\"\<Data\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Animal7Trial1Hip", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\<KM23_RUN_01_Hip 3D Joint Angle Data - One Limb Cycle - \
+FILTERED.xlsx\>\"", ",", "\"\<Data\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Animal7Trial2Hip", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\<KM23_RUN_02_Hip 3D Joint Angle Data - One Limb Cycle - \
+FILTERED.xlsx\>\"", ",", "\"\<Data\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Animal7Trial3Hip", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\<KM23_RUN_03_Hip 3D Joint Angle Data - One Limb Cycle - \
+FILTERED.xlsx\>\"", ",", "\"\<Data\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Animal7Trial4Hip", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\<KM23_RUN_05_Hip 3D Joint Angle Data - One Limb Cycle - \
+FILTERED.xlsx\>\"", ",", "\"\<Data\>\""}], "]"}]}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.6568562129887*^9, 3.656856234395924*^9}, {
+  3.656856278108424*^9, 3.6568562913641825`*^9}, {3.656856344860242*^9, 
+  3.6568567204177227`*^9}, {3.657364852189438*^9, 3.6573648689693975`*^9}, {
+  3.6573704305155*^9, 3.657370481483415*^9}, {3.65737070430416*^9, 
+  3.6573708246720448`*^9}, {3.657370902938521*^9, 3.657370946033986*^9}, {
+  3.657370976857749*^9, 3.6573710923273535`*^9}, {3.6573711833415594`*^9, 
+  3.6573712411518655`*^9}, {3.6581321600028677`*^9, 3.658132178085894*^9}, {
+  3.663939042803356*^9, 3.6639390433656425`*^9}, {3.663939151691818*^9, 
+  3.663939207907077*^9}, {3.6639416894774246`*^9, 3.6639416904410057`*^9}, {
+  3.665158017052698*^9, 3.665158029949559*^9}, {3.7075596044474926`*^9, 
+  3.707559628789527*^9}, {3.722897256940787*^9, 3.722897385195257*^9}, {
+  3.7228977242665634`*^9, 3.722897727766879*^9}, {3.7355686176481867`*^9, 
+  3.7355686474338818`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+  "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+    "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+    "**", "**", "**", "**", "**"}], "******)"}]], "Input",
+ CellChangeTimes->{{3.6568559187128677`*^9, 3.656855922325074*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "Finding", " ", "frame", " ", "of", " ", "maximum", " ", "hip", " ", 
+    "extension", " ", "between", " ", "start", " ", "of", " ", "limb", " ", 
+    "cycle", " ", "and", " ", "end", " ", "of", " ", "limb", " ", "cycle"}], 
+   "*)"}], "\[IndentingNewLine]", "\n", 
+  RowBox[{
+   RowBox[{"Animal0Trial1HipMAXANGLE", "=", 
+    RowBox[{"Max", "[", "Animal0Trial1Hip", "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"Animal1Trial1HipMAXANGLE", "=", 
+    RowBox[{"Max", "[", "Animal1Trial1Hip", "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"Animal1Trial2HipMAXANGLE", "=", 
+    RowBox[{"Max", "[", "Animal1Trial2Hip", "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"Animal1Trial3HipMAXANGLE", "=", 
+    RowBox[{"Max", "[", "Animal1Trial3Hip", "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"Animal2Trial1HipMAXANGLE", "=", 
+    RowBox[{"Max", "[", "Animal2Trial1Hip", "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"Animal2Trial2HipMAXANGLE", "=", 
+    RowBox[{"Max", "[", "Animal2Trial2Hip", "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"Animal2Trial3HipMAXANGLE", "=", 
+    RowBox[{"Max", "[", "Animal2Trial3Hip", "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"Animal3Trial1HipMAXANGLE", "=", 
+    RowBox[{"Max", "[", "Animal3Trial1Hip", "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"Animal3Trial2HipMAXANGLE", "=", 
+    RowBox[{"Max", "[", "Animal3Trial2Hip", "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"Animal4Trial1HipMAXANGLE", "=", 
+    RowBox[{"Max", "[", "Animal4Trial1Hip", "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"Animal4Trial2HipMAXANGLE", "=", 
+    RowBox[{"Max", "[", "Animal4Trial2Hip", "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"Animal4Trial3HipMAXANGLE", "=", 
+    RowBox[{"Max", "[", "Animal4Trial3Hip", "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"Animal4Trial4HipMAXANGLE", "=", 
+    RowBox[{"Max", "[", "Animal4Trial4Hip", "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"Animal4Trial5HipMAXANGLE", "=", 
+    RowBox[{"Max", "[", "Animal4Trial5Hip", "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"Animal5Trial1HipMAXANGLE", "=", 
+    RowBox[{"Max", "[", "Animal5Trial1Hip", "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"Animal5Trial2HipMAXANGLE", "=", 
+    RowBox[{"Max", "[", "Animal5Trial2Hip", "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"Animal5Trial3HipMAXANGLE", "=", 
+    RowBox[{"Max", "[", "Animal5Trial3Hip", "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"Animal6Trial1HipMAXANGLE", "=", 
+    RowBox[{"Max", "[", "Animal6Trial1Hip", "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"Animal6Trial2HipMAXANGLE", "=", 
+    RowBox[{"Max", "[", "Animal6Trial2Hip", "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"Animal7Trial1HipMAXANGLE", "=", 
+    RowBox[{"Max", "[", "Animal7Trial1Hip", "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"Animal7Trial2HipMAXANGLE", "=", 
+    RowBox[{"Max", "[", "Animal7Trial2Hip", "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"Animal7Trial3HipMAXANGLE", "=", 
+    RowBox[{"Max", "[", "Animal7Trial3Hip", "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"Animal7Trial4HipMAXANGLE", "=", 
+    RowBox[{"Max", "[", "Animal7Trial4Hip", "]"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.6581322578380136`*^9, 3.658132300872075*^9}, {
+  3.658132463889308*^9, 3.658132651322571*^9}, {3.658132689195631*^9, 
+  3.658133019835105*^9}, {3.658133315801566*^9, 3.6581333240525775`*^9}, {
+  3.6639392350008554`*^9, 3.6639392765103517`*^9}, {3.707559647420553*^9, 
+  3.707559684303605*^9}, {3.7228973989115143`*^9, 3.722897494779495*^9}, {
+  3.7355686542418547`*^9, 3.7355686757031093`*^9}}],
+
+Cell[BoxData["118.52913205575088`"], "Output",
+ CellChangeTimes->{3.7075596949946203`*^9, 3.7228976966171503`*^9, 
+  3.7228977343718295`*^9, 3.728034144911605*^9, 3.7390125400714197`*^9, 
+  3.7407347447178545`*^9}],
+
+Cell[BoxData["133.17951163949917`"], "Output",
+ CellChangeTimes->{3.7075596949946203`*^9, 3.7228976966171503`*^9, 
+  3.7228977343718295`*^9, 3.728034144911605*^9, 3.7390125400714197`*^9, 
+  3.7407347447178545`*^9}],
+
+Cell[BoxData["143.54508581628025`"], "Output",
+ CellChangeTimes->{3.7075596949946203`*^9, 3.7228976966171503`*^9, 
+  3.7228977343718295`*^9, 3.728034144911605*^9, 3.7390125400714197`*^9, 
+  3.7407347447277985`*^9}],
+
+Cell[BoxData["120.45241899983156`"], "Output",
+ CellChangeTimes->{3.7075596949946203`*^9, 3.7228976966171503`*^9, 
+  3.7228977343718295`*^9, 3.728034144911605*^9, 3.7390125400714197`*^9, 
+  3.7407347447277985`*^9}],
+
+Cell[BoxData["118.55391163798735`"], "Output",
+ CellChangeTimes->{3.7075596949946203`*^9, 3.7228976966171503`*^9, 
+  3.7228977343718295`*^9, 3.728034144911605*^9, 3.7390125400714197`*^9, 
+  3.7407347447277985`*^9}],
+
+Cell[BoxData["125.01380178532277`"], "Output",
+ CellChangeTimes->{3.7075596949946203`*^9, 3.7228976966171503`*^9, 
+  3.7228977343718295`*^9, 3.728034144911605*^9, 3.7390125400714197`*^9, 
+  3.7407347447277985`*^9}],
+
+Cell[BoxData["122.2487720060366`"], "Output",
+ CellChangeTimes->{3.7075596949946203`*^9, 3.7228976966171503`*^9, 
+  3.7228977343718295`*^9, 3.728034144911605*^9, 3.7390125400714197`*^9, 
+  3.7407347447411137`*^9}],
+
+Cell[BoxData["119.18672878387575`"], "Output",
+ CellChangeTimes->{3.7075596949946203`*^9, 3.7228976966171503`*^9, 
+  3.7228977343718295`*^9, 3.728034144911605*^9, 3.7390125400714197`*^9, 
+  3.7407347447451053`*^9}],
+
+Cell[BoxData["117.59727065983799`"], "Output",
+ CellChangeTimes->{3.7075596949946203`*^9, 3.7228976966171503`*^9, 
+  3.7228977343718295`*^9, 3.728034144911605*^9, 3.7390125400714197`*^9, 
+  3.740734744749096*^9}],
+
+Cell[BoxData["113.63464445784876`"], "Output",
+ CellChangeTimes->{3.7075596949946203`*^9, 3.7228976966171503`*^9, 
+  3.7228977343718295`*^9, 3.728034144911605*^9, 3.7390125400714197`*^9, 
+  3.7407347447496223`*^9}],
+
+Cell[BoxData["108.56558136248836`"], "Output",
+ CellChangeTimes->{3.7075596949946203`*^9, 3.7228976966171503`*^9, 
+  3.7228977343718295`*^9, 3.728034144911605*^9, 3.7390125400714197`*^9, 
+  3.7407347447496223`*^9}],
+
+Cell[BoxData["108.90775871056101`"], "Output",
+ CellChangeTimes->{3.7075596949946203`*^9, 3.7228976966171503`*^9, 
+  3.7228977343718295`*^9, 3.728034144911605*^9, 3.7390125400714197`*^9, 
+  3.7407347447496223`*^9}],
+
+Cell[BoxData["101.05924048495972`"], "Output",
+ CellChangeTimes->{3.7075596949946203`*^9, 3.7228976966171503`*^9, 
+  3.7228977343718295`*^9, 3.728034144911605*^9, 3.7390125400714197`*^9, 
+  3.7407347447576776`*^9}],
+
+Cell[BoxData["102.65333935395815`"], "Output",
+ CellChangeTimes->{3.7075596949946203`*^9, 3.7228976966171503`*^9, 
+  3.7228977343718295`*^9, 3.728034144911605*^9, 3.7390125400714197`*^9, 
+  3.7407347447576776`*^9}],
+
+Cell[BoxData["118.04589283371293`"], "Output",
+ CellChangeTimes->{3.7075596949946203`*^9, 3.7228976966171503`*^9, 
+  3.7228977343718295`*^9, 3.728034144911605*^9, 3.7390125400714197`*^9, 
+  3.7407347447576776`*^9}],
+
+Cell[BoxData["118.17896884370161`"], "Output",
+ CellChangeTimes->{3.7075596949946203`*^9, 3.7228976966171503`*^9, 
+  3.7228977343718295`*^9, 3.728034144911605*^9, 3.7390125400714197`*^9, 
+  3.7407347447576776`*^9}],
+
+Cell[BoxData["117.47702606656426`"], "Output",
+ CellChangeTimes->{3.7075596949946203`*^9, 3.7228976966171503`*^9, 
+  3.7228977343718295`*^9, 3.728034144911605*^9, 3.7390125400714197`*^9, 
+  3.7407347447678294`*^9}],
+
+Cell[BoxData["113.74022577834542`"], "Output",
+ CellChangeTimes->{3.7075596949946203`*^9, 3.7228976966171503`*^9, 
+  3.7228977343718295`*^9, 3.728034144911605*^9, 3.7390125400714197`*^9, 
+  3.7407347447678294`*^9}],
+
+Cell[BoxData["129.92456493687902`"], "Output",
+ CellChangeTimes->{3.7075596949946203`*^9, 3.7228976966171503`*^9, 
+  3.7228977343718295`*^9, 3.728034144911605*^9, 3.7390125400714197`*^9, 
+  3.7407347447777286`*^9}],
+
+Cell[BoxData["159.54935536866668`"], "Output",
+ CellChangeTimes->{3.7075596949946203`*^9, 3.7228976966171503`*^9, 
+  3.7228977343718295`*^9, 3.728034144911605*^9, 3.7390125400714197`*^9, 
+  3.7407347447777286`*^9}],
+
+Cell[BoxData["126.45345045333008`"], "Output",
+ CellChangeTimes->{3.7075596949946203`*^9, 3.7228976966171503`*^9, 
+  3.7228977343718295`*^9, 3.728034144911605*^9, 3.7390125400714197`*^9, 
+  3.7407347447817426`*^9}],
+
+Cell[BoxData["134.6819847384364`"], "Output",
+ CellChangeTimes->{3.7075596949946203`*^9, 3.7228976966171503`*^9, 
+  3.7228977343718295`*^9, 3.728034144911605*^9, 3.7390125400714197`*^9, 
+  3.7407347447817426`*^9}],
+
+Cell[BoxData["118.07879833982399`"], "Output",
+ CellChangeTimes->{3.7075596949946203`*^9, 3.7228976966171503`*^9, 
+  3.7228977343718295`*^9, 3.728034144911605*^9, 3.7390125400714197`*^9, 
+  3.7407347447868385`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Animal0Trial1HipFrameofMAXANGLE", "=", 
+  RowBox[{
+   RowBox[{"Position", "[", 
+    RowBox[{"Animal0Trial1Hip", ",", "Animal0Trial1HipMAXANGLE"}], "]"}], "[", 
+   RowBox[{"[", 
+    RowBox[{"1", ",", "2"}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Animal1Trial1HipFrameofMAXANGLE", "=", 
+  RowBox[{
+   RowBox[{"Position", "[", 
+    RowBox[{"Animal1Trial1Hip", ",", "Animal1Trial1HipMAXANGLE"}], "]"}], "[", 
+   RowBox[{"[", 
+    RowBox[{"1", ",", "2"}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Animal1Trial2HipFrameofMAXANGLE", "=", 
+  RowBox[{
+   RowBox[{"Position", "[", 
+    RowBox[{"Animal1Trial2Hip", ",", "Animal1Trial2HipMAXANGLE"}], "]"}], "[", 
+   RowBox[{"[", 
+    RowBox[{"1", ",", "2"}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Animal1Trial3HipFrameofMAXANGLE", "=", 
+  RowBox[{
+   RowBox[{"Position", "[", 
+    RowBox[{"Animal1Trial3Hip", ",", "Animal1Trial3HipMAXANGLE"}], "]"}], "[", 
+   RowBox[{"[", 
+    RowBox[{"1", ",", "2"}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Animal2Trial1HipFrameofMAXANGLE", "=", 
+  RowBox[{
+   RowBox[{"Position", "[", 
+    RowBox[{"Animal2Trial1Hip", ",", "Animal2Trial1HipMAXANGLE"}], "]"}], "[", 
+   RowBox[{"[", 
+    RowBox[{"1", ",", "2"}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Animal2Trial2HipFrameofMAXANGLE", "=", 
+  RowBox[{
+   RowBox[{"Position", "[", 
+    RowBox[{"Animal2Trial2Hip", ",", "Animal2Trial2HipMAXANGLE"}], "]"}], "[", 
+   RowBox[{"[", 
+    RowBox[{"1", ",", "2"}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Animal2Trial3HipFrameofMAXANGLE", "=", 
+  RowBox[{
+   RowBox[{"Position", "[", 
+    RowBox[{"Animal2Trial3Hip", ",", "Animal2Trial3HipMAXANGLE"}], "]"}], "[", 
+   RowBox[{"[", 
+    RowBox[{"1", ",", "2"}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Animal3Trial1HipFrameofMAXANGLE", "=", 
+  RowBox[{
+   RowBox[{"Position", "[", 
+    RowBox[{"Animal3Trial1Hip", ",", "Animal3Trial1HipMAXANGLE"}], "]"}], "[", 
+   RowBox[{"[", 
+    RowBox[{"1", ",", "2"}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Animal3Trial2HipFrameofMAXANGLE", "=", 
+  RowBox[{
+   RowBox[{"Position", "[", 
+    RowBox[{"Animal3Trial2Hip", ",", "Animal3Trial2HipMAXANGLE"}], "]"}], "[", 
+   RowBox[{"[", 
+    RowBox[{"1", ",", "2"}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Animal4Trial1HipFrameofMAXANGLE", "=", 
+  RowBox[{
+   RowBox[{"Position", "[", 
+    RowBox[{"Animal4Trial1Hip", ",", "Animal4Trial1HipMAXANGLE"}], "]"}], "[", 
+   RowBox[{"[", 
+    RowBox[{"1", ",", "2"}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Animal4Trial2HipFrameofMAXANGLE", "=", 
+  RowBox[{
+   RowBox[{"Position", "[", 
+    RowBox[{"Animal4Trial2Hip", ",", "Animal4Trial2HipMAXANGLE"}], "]"}], "[", 
+   RowBox[{"[", 
+    RowBox[{"1", ",", "2"}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Animal4Trial3HipFrameofMAXANGLE", "=", 
+  RowBox[{
+   RowBox[{"Position", "[", 
+    RowBox[{"Animal4Trial3Hip", ",", "Animal4Trial3HipMAXANGLE"}], "]"}], "[", 
+   RowBox[{"[", 
+    RowBox[{"1", ",", "2"}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Animal4Trial4HipFrameofMAXANGLE", "=", 
+  RowBox[{
+   RowBox[{"Position", "[", 
+    RowBox[{"Animal4Trial4Hip", ",", "Animal4Trial4HipMAXANGLE"}], "]"}], "[", 
+   RowBox[{"[", 
+    RowBox[{"1", ",", "2"}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Animal4Trial5HipFrameofMAXANGLE", "=", 
+  RowBox[{
+   RowBox[{"Position", "[", 
+    RowBox[{"Animal4Trial5Hip", ",", "Animal4Trial5HipMAXANGLE"}], "]"}], "[", 
+   RowBox[{"[", 
+    RowBox[{"1", ",", "2"}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Animal5Trial1HipFrameofMAXANGLE", "=", 
+  RowBox[{
+   RowBox[{"Position", "[", 
+    RowBox[{"Animal5Trial1Hip", ",", "Animal5Trial1HipMAXANGLE"}], "]"}], "[", 
+   RowBox[{"[", 
+    RowBox[{"1", ",", "2"}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Animal5Trial2HipFrameofMAXANGLE", "=", 
+  RowBox[{
+   RowBox[{"Position", "[", 
+    RowBox[{"Animal5Trial2Hip", ",", "Animal5Trial2HipMAXANGLE"}], "]"}], "[", 
+   RowBox[{"[", 
+    RowBox[{"1", ",", "2"}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Animal5Trial3HipFrameofMAXANGLE", "=", 
+  RowBox[{
+   RowBox[{"Position", "[", 
+    RowBox[{"Animal5Trial3Hip", ",", "Animal5Trial3HipMAXANGLE"}], "]"}], "[", 
+   RowBox[{"[", 
+    RowBox[{"1", ",", "2"}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Animal6Trial1HipFrameofMAXANGLE", "=", 
+  RowBox[{
+   RowBox[{"Position", "[", 
+    RowBox[{"Animal6Trial1Hip", ",", "Animal6Trial1HipMAXANGLE"}], "]"}], "[", 
+   RowBox[{"[", 
+    RowBox[{"1", ",", "2"}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Animal6Trial2HipFrameofMAXANGLE", "=", 
+  RowBox[{
+   RowBox[{"Position", "[", 
+    RowBox[{"Animal6Trial2Hip", ",", "Animal6Trial2HipMAXANGLE"}], "]"}], "[", 
+   RowBox[{"[", 
+    RowBox[{"1", ",", "2"}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Animal7Trial1HipFrameofMAXANGLE", "=", 
+  RowBox[{
+   RowBox[{"Position", "[", 
+    RowBox[{"Animal7Trial1Hip", ",", "Animal7Trial1HipMAXANGLE"}], "]"}], "[", 
+   RowBox[{"[", 
+    RowBox[{"1", ",", "2"}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Animal7Trial2HipFrameofMAXANGLE", "=", 
+  RowBox[{
+   RowBox[{"Position", "[", 
+    RowBox[{"Animal7Trial2Hip", ",", "Animal7Trial2HipMAXANGLE"}], "]"}], "[", 
+   RowBox[{"[", 
+    RowBox[{"1", ",", "2"}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Animal7Trial3HipFrameofMAXANGLE", "=", 
+  RowBox[{
+   RowBox[{"Position", "[", 
+    RowBox[{"Animal7Trial3Hip", ",", "Animal7Trial3HipMAXANGLE"}], "]"}], "[", 
+   RowBox[{"[", 
+    RowBox[{"1", ",", "2"}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Animal7Trial4HipFrameofMAXANGLE", "=", 
+  RowBox[{
+   RowBox[{"Position", "[", 
+    RowBox[{"Animal7Trial4Hip", ",", "Animal7Trial4HipMAXANGLE"}], "]"}], "[", 
+   RowBox[{"[", 
+    RowBox[{"1", ",", "2"}], "]"}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.7075597076056376`*^9, 3.707559773399731*^9}, {
+  3.722897505552741*^9, 3.722897640715658*^9}, {3.735568682673518*^9, 
+  3.7355687103289757`*^9}}],
+
+Cell[BoxData["294"], "Output",
+ CellChangeTimes->{3.707559741948687*^9, 3.707559773909732*^9, 
+  3.722897742369131*^9, 3.728034152805999*^9, 3.739012543764494*^9, 
+  3.740734747137574*^9}],
+
+Cell[BoxData["136"], "Output",
+ CellChangeTimes->{3.707559741948687*^9, 3.707559773909732*^9, 
+  3.722897742369131*^9, 3.728034152805999*^9, 3.739012543764494*^9, 
+  3.7407347471420846`*^9}],
+
+Cell[BoxData["161"], "Output",
+ CellChangeTimes->{3.707559741948687*^9, 3.707559773909732*^9, 
+  3.722897742369131*^9, 3.728034152805999*^9, 3.739012543764494*^9, 
+  3.740734747147662*^9}],
+
+Cell[BoxData["96"], "Output",
+ CellChangeTimes->{3.707559741948687*^9, 3.707559773909732*^9, 
+  3.722897742369131*^9, 3.728034152805999*^9, 3.739012543764494*^9, 
+  3.740734747147662*^9}],
+
+Cell[BoxData["96"], "Output",
+ CellChangeTimes->{3.707559741948687*^9, 3.707559773909732*^9, 
+  3.722897742369131*^9, 3.728034152805999*^9, 3.739012543764494*^9, 
+  3.740734747157942*^9}],
+
+Cell[BoxData["113"], "Output",
+ CellChangeTimes->{3.707559741948687*^9, 3.707559773909732*^9, 
+  3.722897742369131*^9, 3.728034152805999*^9, 3.739012543764494*^9, 
+  3.740734747157942*^9}],
+
+Cell[BoxData["95"], "Output",
+ CellChangeTimes->{3.707559741948687*^9, 3.707559773909732*^9, 
+  3.722897742369131*^9, 3.728034152805999*^9, 3.739012543764494*^9, 
+  3.7407347471776466`*^9}],
+
+Cell[BoxData["79"], "Output",
+ CellChangeTimes->{3.707559741948687*^9, 3.707559773909732*^9, 
+  3.722897742369131*^9, 3.728034152805999*^9, 3.739012543764494*^9, 
+  3.7407347471776466`*^9}],
+
+Cell[BoxData["80"], "Output",
+ CellChangeTimes->{3.707559741948687*^9, 3.707559773909732*^9, 
+  3.722897742369131*^9, 3.728034152805999*^9, 3.739012543764494*^9, 
+  3.7407347471776466`*^9}],
+
+Cell[BoxData["110"], "Output",
+ CellChangeTimes->{3.707559741948687*^9, 3.707559773909732*^9, 
+  3.722897742369131*^9, 3.728034152805999*^9, 3.739012543764494*^9, 
+  3.7407347471776466`*^9}],
+
+Cell[BoxData["52"], "Output",
+ CellChangeTimes->{3.707559741948687*^9, 3.707559773909732*^9, 
+  3.722897742369131*^9, 3.728034152805999*^9, 3.739012543764494*^9, 
+  3.740734747193164*^9}],
+
+Cell[BoxData["66"], "Output",
+ CellChangeTimes->{3.707559741948687*^9, 3.707559773909732*^9, 
+  3.722897742369131*^9, 3.728034152805999*^9, 3.739012543764494*^9, 
+  3.74073474719715*^9}],
+
+Cell[BoxData["95"], "Output",
+ CellChangeTimes->{3.707559741948687*^9, 3.707559773909732*^9, 
+  3.722897742369131*^9, 3.728034152805999*^9, 3.739012543764494*^9, 
+  3.740734747200143*^9}],
+
+Cell[BoxData["88"], "Output",
+ CellChangeTimes->{3.707559741948687*^9, 3.707559773909732*^9, 
+  3.722897742369131*^9, 3.728034152805999*^9, 3.739012543764494*^9, 
+  3.7407347472031355`*^9}],
+
+Cell[BoxData["55"], "Output",
+ CellChangeTimes->{3.707559741948687*^9, 3.707559773909732*^9, 
+  3.722897742369131*^9, 3.728034152805999*^9, 3.739012543764494*^9, 
+  3.74073474720909*^9}],
+
+Cell[BoxData["41"], "Output",
+ CellChangeTimes->{3.707559741948687*^9, 3.707559773909732*^9, 
+  3.722897742369131*^9, 3.728034152805999*^9, 3.739012543764494*^9, 
+  3.740734747209752*^9}],
+
+Cell[BoxData["44"], "Output",
+ CellChangeTimes->{3.707559741948687*^9, 3.707559773909732*^9, 
+  3.722897742369131*^9, 3.728034152805999*^9, 3.739012543764494*^9, 
+  3.740734747209752*^9}],
+
+Cell[BoxData["63"], "Output",
+ CellChangeTimes->{3.707559741948687*^9, 3.707559773909732*^9, 
+  3.722897742369131*^9, 3.728034152805999*^9, 3.739012543764494*^9, 
+  3.740734747209752*^9}],
+
+Cell[BoxData["126"], "Output",
+ CellChangeTimes->{3.707559741948687*^9, 3.707559773909732*^9, 
+  3.722897742369131*^9, 3.728034152805999*^9, 3.739012543764494*^9, 
+  3.7407347472178063`*^9}],
+
+Cell[BoxData["50"], "Output",
+ CellChangeTimes->{3.707559741948687*^9, 3.707559773909732*^9, 
+  3.722897742369131*^9, 3.728034152805999*^9, 3.739012543764494*^9, 
+  3.740734747221815*^9}],
+
+Cell[BoxData["58"], "Output",
+ CellChangeTimes->{3.707559741948687*^9, 3.707559773909732*^9, 
+  3.722897742369131*^9, 3.728034152805999*^9, 3.739012543764494*^9, 
+  3.740734747221815*^9}],
+
+Cell[BoxData["46"], "Output",
+ CellChangeTimes->{3.707559741948687*^9, 3.707559773909732*^9, 
+  3.722897742369131*^9, 3.728034152805999*^9, 3.739012543764494*^9, 
+  3.740734747221815*^9}],
+
+Cell[BoxData["63"], "Output",
+ CellChangeTimes->{3.707559741948687*^9, 3.707559773909732*^9, 
+  3.722897742369131*^9, 3.728034152805999*^9, 3.739012543764494*^9, 
+  3.7407347472278852`*^9}]
+}, Open  ]]
+},
+WindowSize->{1262, 709},
+WindowMargins->{{78, Automatic}, {Automatic, 28}},
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 4199, 108, 392, "Input"],
+Cell[4781, 132, 475, 6, 30, "Output"]
+}, Open  ]],
+Cell[5271, 141, 329, 6, 30, "Input"],
+Cell[5603, 149, 6942, 182, 525, "Input"],
+Cell[12548, 333, 329, 6, 30, "Input"],
+Cell[CellGroupData[{
+Cell[12902, 343, 3595, 61, 525, "Input"],
+Cell[16500, 406, 214, 3, 30, "Output"],
+Cell[16717, 411, 214, 3, 30, "Output"],
+Cell[16934, 416, 214, 3, 30, "Output"],
+Cell[17151, 421, 214, 3, 30, "Output"],
+Cell[17368, 426, 214, 3, 30, "Output"],
+Cell[17585, 431, 214, 3, 30, "Output"],
+Cell[17802, 436, 213, 3, 30, "Output"],
+Cell[18018, 441, 214, 3, 30, "Output"],
+Cell[18235, 446, 212, 3, 30, "Output"],
+Cell[18450, 451, 214, 3, 30, "Output"],
+Cell[18667, 456, 214, 3, 30, "Output"],
+Cell[18884, 461, 214, 3, 30, "Output"],
+Cell[19101, 466, 214, 3, 30, "Output"],
+Cell[19318, 471, 214, 3, 30, "Output"],
+Cell[19535, 476, 214, 3, 30, "Output"],
+Cell[19752, 481, 214, 3, 30, "Output"],
+Cell[19969, 486, 214, 3, 30, "Output"],
+Cell[20186, 491, 214, 3, 30, "Output"],
+Cell[20403, 496, 214, 3, 30, "Output"],
+Cell[20620, 501, 214, 3, 30, "Output"],
+Cell[20837, 506, 214, 3, 30, "Output"],
+Cell[21054, 511, 213, 3, 30, "Output"],
+Cell[21270, 516, 214, 3, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21521, 524, 6057, 141, 449, "Input"],
+Cell[27581, 667, 188, 3, 30, "Output"],
+Cell[27772, 672, 190, 3, 30, "Output"],
+Cell[27965, 677, 188, 3, 30, "Output"],
+Cell[28156, 682, 187, 3, 30, "Output"],
+Cell[28346, 687, 187, 3, 30, "Output"],
+Cell[28536, 692, 188, 3, 30, "Output"],
+Cell[28727, 697, 189, 3, 30, "Output"],
+Cell[28919, 702, 189, 3, 30, "Output"],
+Cell[29111, 707, 189, 3, 30, "Output"],
+Cell[29303, 712, 190, 3, 30, "Output"],
+Cell[29496, 717, 187, 3, 30, "Output"],
+Cell[29686, 722, 186, 3, 30, "Output"],
+Cell[29875, 727, 187, 3, 30, "Output"],
+Cell[30065, 732, 189, 3, 30, "Output"],
+Cell[30257, 737, 186, 3, 30, "Output"],
+Cell[30446, 742, 187, 3, 30, "Output"],
+Cell[30636, 747, 187, 3, 30, "Output"],
+Cell[30826, 752, 187, 3, 30, "Output"],
+Cell[31016, 757, 190, 3, 30, "Output"],
+Cell[31209, 762, 187, 3, 30, "Output"],
+Cell[31399, 767, 187, 3, 30, "Output"],
+Cell[31589, 772, 187, 3, 30, "Output"],
+Cell[31779, 777, 189, 3, 30, "Output"]
+}, Open  ]]
+}
+]
+*)
+
