@@ -5,11 +5,11 @@ The code should be run in the following order:
 All code hereafter requires the METADATA.xlsx spreadsheet
 
 2. Stick Figure and Speed Analysis.nb
-3. Stick Figure and 3D Jint Angles.nb
+3. Stick Figure and 3D Joint Angles.nb
 4. Stick Figure and Pelvic Vector Analysis.nb
 5. Hindlimb Joint Angle Plots.nb
-6. Staistical Analysis.nb
-7. Segment Angles - Polar Coordinates
+6. Statistical Analysis.nb
+7. Segment Angles - Polar Coordinates.nb
 8. Finding position of maximum hip extension - Single limb cycle.nb
 9. Pelvic Vector Analyses Plots.nb
 10. Hindlimb Joint Angles Plots
@@ -22,6 +22,6 @@ Run the following code, inputting the above data into the relevant places within
 
 11. Speed Gain and LME Analysis Plots.nb
 
-Finally, run the following code to dtermine footfall patterns during frog walking (required Footfall Pattern Data.xlxs"
+Finally, run the following code to determine footfall patterns during frog walking (required Footfall Pattern Data.xlxs).
 
 12. Footfall Patterns.nb
